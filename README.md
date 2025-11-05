@@ -9,7 +9,7 @@ A collection of JavaScript coding challenges designed to help you learn and prac
 2. Clone this repository
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>/fork
+git clone https://github.com/<your-username>/js-content.git
 ```
 
 3. Open in VSCode (or other editor)
