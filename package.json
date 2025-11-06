@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "play": "node 5.\\ Rock\\ Paper\\ Scissors/rockPaperScissors.js"
   },
   "keywords": [
     "javascript",
