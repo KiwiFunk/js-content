@@ -1,0 +1,404 @@
+/* Introduction Page */
+.introduction-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.intro-header {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.intro-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #667eea;
+}
+
+.intro-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.progress-summary {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.progress-bar-container {
+  height: 30px;
+  background: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  position: initial;
+  transform: initial;
+}
+
+.filters-section {
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filter-group:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  min-width: 90px;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.filter-btn.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.filter-results-info {
+  padding-top: 1rem;
+  border-top: 2px solid #f0f0f0;
+  color: #666;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.intro-instructions {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.intro-instructions h2 {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.intro-instructions ol {
+  padding-left: 1.5rem;
+  line-height: 2;
+}
+
+.intro-instructions li {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+.intro-instructions code {
+  background: #f0f0f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #667eea;
+}
+
+.utilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 2rem;
+}
+
+.utility-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.utility-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.utility-card-header {
+  padding: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.utility-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.utility-card h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+.difficulty-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.utility-description {
+  color: #666;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.utility-method {
+  margin-top: 0.75rem;
+}
+
+.utility-method code {
+  background: #667eea;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.test-results {
+  padding: 1rem 1.5rem;
+  background: #f9f9f9;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.test-result {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.test-icon {
+  font-size: 1.2rem;
+}
+
+.test-icon.passed {
+  color: #2ed573;
+}
+
+.test-icon.failed {
+  color: #ff4757;
+}
+
+.test-name {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.test-summary {
+  padding: 1rem 1.5rem;
+  border-top: 2px solid #f0f0f0;
+  text-align: center;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.all-passed {
+  color: #2ed573;
+  font-size: 1.05rem;
+}
+
+.some-failed {
+  color: #ffa502;
+  font-size: 1.05rem;
+}
+
+.btn-show-instructions {
+  width: 100%;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+
+.btn-show-instructions:hover {
+  background: #5568d3;
+}
+
+.instructions-panel {
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-top: 3px solid #667eea;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.instructions-panel h4 {
+  color: #667eea;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.instructions-panel h4:first-child {
+  margin-top: 0;
+}
+
+.instructions-panel p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.instructions-panel ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.instructions-panel li {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.code-example {
+  background: #282c34;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.code-example code {
+  color: #abb2bf;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+/* Modal Content Styling */
+.instructions-modal-content {
+  max-width: 800px;
+}
+
+.instructions-modal-content h2 {
+  color: #667eea;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 0.75rem;
+}
+
+.instructions-modal-content h4 {
+  color: #667eea;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.instructions-modal-content h4:first-of-type {
+  margin-top: 0;
+}
+
+.instructions-modal-content p {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.instructions-modal-content ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.instructions-modal-content li {
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+
+/* Responsive for Introduction Page */
+@media (max-width: 768px) {
+  .utilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-header h1 {
+    font-size: 2rem;
+  }
+
+  .intro-subtitle {
+    font-size: 1rem;
+  }
+
+  .instructions-modal-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .instructions-modal-content h4 {
+    font-size: 1.1rem;
+  }
+}
