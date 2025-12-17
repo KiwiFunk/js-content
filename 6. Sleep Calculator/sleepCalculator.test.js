@@ -41,7 +41,12 @@ describe("Sleep Calculator", () => {
 
     // Tests for getIdealSleepHours
     describe.skip("getIdealSleepHours", () => {
-
+        test('returns correct value for given ideal hours/night', () => {
+            expect(getIdealSleepHours(6)).toBe(42);
+            expect(getIdealSleepHours(7)).toBe(49);
+            expect(getIdealSleepHours(8)).toBe(56);
+            expect(getIdealSleepHours(12)).toBe(84);
+        });
     });
 
     // Tests for calculateSleepDebt
