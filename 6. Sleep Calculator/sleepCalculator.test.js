@@ -33,7 +33,7 @@ describe("Sleep Calculator", () => {
     });
 
     // Tests for getActualSleepHours
-    describe.skip("getActualSleepHours", () => {
+    describe("getActualSleepHours", () => {
         test('returns correct total sleep hours for the week', () => {
             expect(getActualSleepHours()).toBe(50);
         });
