@@ -20,6 +20,7 @@
   "author": "JavaScript Learning",
   "license": "MIT",
   "devDependencies": {
+    "baseline-browser-mapping": "^2.9.8",
     "jest": "^29.7.0"
   },
   "jest": {
