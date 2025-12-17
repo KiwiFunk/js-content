@@ -1,6 +1,6 @@
 function magicEightBall() {
 
-    const x = Math.random();
+    const i = Math.random();
 
     // Match responses to those expected by test suite
     const responses = [
@@ -13,12 +13,12 @@ function magicEightBall() {
         'Outlook not so good',
         'Signs point to yes'
     ];
-
-    return responses[Math.floor(x * responses.length)] || 'Error: Invalid response';
+    // Return response based on random number index
+    return responses[Math.floor(i * responses.length)] || 'Error: Invalid response';
 }
 
 function logMagicEightBall(userQuestion, userName = null ) {
-    
+
     userName ? console.log(`Hello, ${userName}!`) : console.log('Hello!');
     console.log(`User's question: ${userQuestion}`);
     console.log(magicEightBall());
