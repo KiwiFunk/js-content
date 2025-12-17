@@ -19,7 +19,7 @@ const getActualSleepHours = () =>
     getSleepHours('thursday') +
     getSleepHours('friday') +
     getSleepHours('saturday') +
-    getSleepHours('Sunday');
+    getSleepHours('sunday');
 
 const getIdealSleepHours = idealHours => idealHours * 7;
 
