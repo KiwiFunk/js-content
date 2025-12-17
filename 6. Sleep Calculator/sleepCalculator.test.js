@@ -40,7 +40,7 @@ describe("Sleep Calculator", () => {
     });
 
     // Tests for getIdealSleepHours
-    describe.skip("getIdealSleepHours", () => {
+    describe("getIdealSleepHours", () => {
         test('returns correct value for given ideal hours/night', () => {
             expect(getIdealSleepHours(6)).toBe(42);
             expect(getIdealSleepHours(7)).toBe(49);
@@ -50,7 +50,43 @@ describe("Sleep Calculator", () => {
     });
 
     // Tests for calculateSleepDebt
-    describe.skip("calculateSleepDebt", () => {
+    describe("calculateSleepDebt", () => {
 
+        // Handle Ideal Sleep Hours being the same as Actual Sleep Hours
+        test('returns correct message for perfect sleep', () => {
+            expect(calculateSleepDebt(50 / 7)).toBe('Perfect amount of sleep.');
+        });
+
+        // Handle Ideal Sleep Hours being less than Actual Sleep Hours
+        test('returns correct message for excess sleep', () => {
+            // By default, getActualSleepHours() returns 50
+            expect(calculateSleepDebt(5)).toBe('You got 15 hour(s) more sleep than needed.');
+            expect(calculateSleepDebt(6)).toBe('You got 8 hour(s) more sleep than needed.');
+            expect(calculateSleepDebt(7)).toBe('You got 1 hour(s) more sleep than needed.');
+        });
+
+        // Handle Ideal Sleep Hours being more than Actual Sleep Hours
+        test('returns correct message for sleep deficit', () => {
+            // By default, getActualSleepHours() returns 50
+            expect(calculateSleepDebt(9)).toBe('You got 13 hour(s) less sleep than needed. Get some rest.');
+            expect(calculateSleepDebt(10)).toBe('You got 20 hour(s) less sleep than needed. Get some rest.');
+            expect(calculateSleepDebt(11)).toBe('You got 27 hour(s) less sleep than needed. Get some rest.');
+        });
+
+        // Handle lack of Ideal Sleep Hours parameter
+        test('returns correct message for default ideal sleep hours', () => {
+            // By default, getActualSleepHours() returns 50 and ideal default should be 8
+            expect(calculateSleepDebt()).toBe('You got 6 hour(s) less sleep than needed. Get some rest.');
+        });
+
+        // Edge case: Ideal Sleep Hours is zero
+        test('returns correct message for zero ideal sleep hours', () => {
+            expect(calculateSleepDebt(0)).toBe('You got 50 hour(s) more sleep than needed.');
+        });
+
+        // Edge case: Negative Ideal Sleep Hours
+        test('returns correct message for negative ideal sleep hours', () => {
+            expect(calculateSleepDebt(-5)).toBe('You got 85 hour(s) more sleep than needed.');
+        });
     });
 });
