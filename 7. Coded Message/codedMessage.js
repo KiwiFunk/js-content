@@ -2,20 +2,32 @@ const startingMessage = ['Learning', 'is', 'not', 'about', 'what', 'you', 'get',
 
 class MessageDecoder {
     constructor(message) {
+        // Take in parameter, and spread into a new array inside the class instance to avoid mutation of original array
         this.message = [...message];
     }
 
+    // Remove the last element from the message array
     removeLastElement() {
-        // your code here
+        this.message.pop();
     }
 
-    addToEnd() {
-        // your code here
+    addToEnd(...args) {
+        // Validate the arguments to ensure they are type str
+        cleaned = args.filter(arg => typeof arg === 'string');
+
+        // Spread cleaned arguments and push to the end of the message array
+        this.message.push(...cleaned);     
     }
 
-    replaceByIndex() {
-        // your code here
+    replaceByIndex(index, newValue) {
+        // Validate input types and range
+        if (typeof index === 'number' && index >= 0 && index < this.message.length && typeof newValue === 'string') {
+            this.message[index] = newValue;
+        } else {
+            console.error('Invalid index or newValue. Ensure the index is within range and newValue is a string.');
+        }
     }
+
 
     removeFirstElement() {
         // your code here
