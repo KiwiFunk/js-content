@@ -1,7 +1,7 @@
 const { calculateDogAge } = require('./dogAge');
 
 describe('Dog Age Calculator', () => {
-  describe.skip('Basic Functionality', () => {
+  describe('Basic Functionality', () => {
      test('converts generic human years correctly', () => {
       expect(calculateDogAge(10)).toBe(53);
       expect(calculateDogAge(20)).toBe(93);
@@ -13,7 +13,7 @@ describe('Dog Age Calculator', () => {
     });
   });
 
- describe.skip('Advanced Cases', () => {
+ describe('Advanced Cases', () => {
    test('converts 1 human year correctly', () => {
       expect(calculateDogAge(1)).toBe(10.5);
     });
@@ -27,7 +27,7 @@ describe('Dog Age Calculator', () => {
     });
   });
 
-  describe.skip('Edge Cases', () => {
+  describe('Edge Cases', () => {
     test('handles 0 years correctly', () => {
       expect(calculateDogAge(0)).toBe(0);
     });
@@ -41,7 +41,7 @@ describe('Dog Age Calculator', () => {
     });
   });
 
-  describe.skip('Input Validation', () => {
+  describe('Input Validation', () => {
     test('returns 0 for non-numeric input', () => {
       expect(calculateDogAge('five')).toBe(0);
     });
