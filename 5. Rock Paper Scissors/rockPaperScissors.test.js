@@ -5,7 +5,7 @@ describe('Rock Paper Scissors', () => {
         jest.restoreAllMocks();
     });
 
-    describe.skip('getUserChoice', () => {
+    describe('getUserChoice', () => {
         test('accepts valid choices (case-insensitive)', () => {
             expect(rps.getUserChoice('Rock')).toBe('rock');
             expect(rps.getUserChoice('PAPER')).toBe('paper');
@@ -25,7 +25,7 @@ describe('Rock Paper Scissors', () => {
         });
     });
 
-    describe.skip('getComputerChoice', () => {
+    describe('getComputerChoice', () => {
         test('all mocked Math.random values return valid choices', () => {
             const mockValues = [0, 0.34, 0.99];
             const validChoices = ['rock', 'paper', 'scissors'];
@@ -59,7 +59,7 @@ describe('Rock Paper Scissors', () => {
 
     });
 
-    describe.skip('determineWinner', () => {
+    describe('determineWinner', () => {
         test('tie cases', () => {
             expect(rps.determineWinner('rock', 'rock')).toBe('The game is a tie!');
             expect(rps.determineWinner('paper', 'paper')).toBe('The game is a tie!');
@@ -87,7 +87,7 @@ describe('Rock Paper Scissors', () => {
 
     });
 
-    describe.skip('Bonus: bomb cheat code', () => {
+    describe('Bonus: bomb cheat code', () => {
         test('bomb always wins', () => {
             expect(rps.determineWinner('bomb', 'rock')).toBe('You won!');
             expect(rps.determineWinner('bomb', 'paper')).toBe('You won!');
@@ -96,7 +96,7 @@ describe('Rock Paper Scissors', () => {
     })
 
     // Shouldn't need to touch these
-    describe.skip('playGame', () => {
+    describe('playGame', () => {
         beforeEach(() => {
             jest.clearAllMocks();
             console.log = jest.fn();
@@ -121,7 +121,7 @@ describe('Rock Paper Scissors', () => {
             expect(console.log).toHaveBeenCalledWith('You won!');
         });
 
-        test.skip('handles invalid user input by re-prompting then closing', async () => {
+        test('handles invalid user input by re-prompting then closing', async () => {
             const mockAsk = jest.fn()
                 .mockResolvedValueOnce('invalid')
                 .mockResolvedValueOnce('paper');
@@ -146,7 +146,7 @@ describe('Rock Paper Scissors', () => {
         });
 
 
-        test.skip('handles bomb cheat code', async () => {
+        test('handles bomb cheat code', async () => {
             await rps.playGame({
                 askFn: jest.fn().mockResolvedValue('bomb'),
                 getUserChoiceFn: jest.fn().mockReturnValue('bomb'),

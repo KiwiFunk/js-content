@@ -1,15 +1,41 @@
 const readline = require('readline')
 
 const getUserChoice = userInput => {
-    // Your code here
+
+    // Validate input type
+    if (typeof userInput !== 'string') {
+        console.log('Error!');
+        return undefined;
+    }
+
+    switch (userInput.toLowerCase()) {
+        case 'rock':
+        case 'paper':
+        case 'scissors':
+        case 'bomb':
+            return userInput.toLowerCase();
+        default:
+            console.log('Error!');
+            return undefined;
+    }
 };
 
 const getComputerChoice = () => {
-    // Your code here
+    return ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
 };
-
+ 
 const determineWinner = (userChoice, computerChoice) => {
-    // Your code here
+    
+    // Cheat code
+    if (userChoice === 'bomb') return 'You won!';
+
+    // Handle game outcomes
+    if (userChoice === computerChoice) return 'The game is a tie!';
+    if (userChoice === 'rock') return computerChoice === 'scissors' ? 'You won!' : 'The computer won!';
+    if (userChoice === 'paper') return computerChoice === 'rock' ? 'You won!' : 'The computer won!';
+    if (userChoice === 'scissors') return computerChoice === 'paper' ? 'You won!' : 'The computer won!';
+    // Fallback for invalid choices
+    else return 'Error: invalid choices';
 };
 
 const askQuestion = (question) => {
