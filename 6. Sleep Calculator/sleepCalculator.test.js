@@ -22,11 +22,21 @@ describe("Sleep Calculator", () => {
         test('returns error for invalid day', () => {
             expect(getSleepHours('invalidDay')).toBeInstanceOf(Error);
         });
+
+        // See if the function can handle different casing
+        test('is case insensitive for day input', () => {
+            expect(getSleepHours('Monday')).toBe(8);
+            expect(getSleepHours('TUESDAY')).toBe(7);
+            expect(getSleepHours('WeDnEsDaY')).toBe(6);
+            expect(getSleepHours('Sunday')).toBe(8);
+        });
     });
 
     // Tests for getActualSleepHours
     describe.skip("getActualSleepHours", () => {
-
+        test('returns correct total sleep hours for the week', () => {
+            expect(getActualSleepHours()).toBe(50);
+        });
     });
 
     // Tests for getIdealSleepHours
