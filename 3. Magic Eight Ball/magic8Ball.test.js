@@ -24,7 +24,7 @@ describe('Magic Eight Ball', () => {
         jest.restoreAllMocks();
     });
 
-    describe.skip('magicEightBall', () => {
+    describe('magicEightBall', () => {
         test('returns valid responses for different random numbers', () => {
             [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875].forEach(randomValue => {
                 Math.random.mockReturnValue(randomValue);
@@ -47,7 +47,7 @@ describe('Magic Eight Ball', () => {
         });
     });
 
-    describe.skip('logMagicEightBall', () => {
+    describe('logMagicEightBall', () => {
         test('logs greeting and question correctly', () => {
             console.log = jest.fn().mockImplementation(() => magic8Ball.magicEightBall());
 
