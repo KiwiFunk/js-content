@@ -8,11 +8,8 @@
  * @returns {Array} Filtered array of tasks
  */
 export function filterTasksByStatus(tasks, completed) {
-    // TODO: Use .filter() to return tasks matching the completion status
-    const callbackFn = (task) => {
-        // your code here...
-    };
-    return tasks.filter(callbackFn);
+    // Use .filter() to return tasks that match the completion status
+    return tasks.filter(task => task.completed === completed);
 }
 
 /**
@@ -21,7 +18,7 @@ export function filterTasksByStatus(tasks, completed) {
  * @returns {Array} Array of high priority tasks
  */
 export function getHighPriorityTasks(tasks) {
-    // TODO: Use .filter() to return only tasks where priority === 'high'
+    return tasks.filter(task => task.priority === 'high');
 }
 
 /**
@@ -30,7 +27,8 @@ export function getHighPriorityTasks(tasks) {
  * @returns {Array} Array of formatted task strings
  */
 export function formatTasksForDisplay(tasks) {
-    // TODO: Use .map() to create strings like "Task: Buy groceries (Priority: high)"
+    // Use .map() to create strings like "Task: Buy groceries (Priority: high)"
+    return tasks.map(task => `Task: ${task.title} (Priority: ${task.priority})`);
 }
 
 /**
@@ -40,8 +38,8 @@ export function formatTasksForDisplay(tasks) {
  * @returns {undefined} No return value (mutates array)
  */
 export function addUniqueTags(array, tags) {
-    // TODO: Use .forEach() to add each tag to the array only if it's not already included
-    // Hint: Use .includes() to check if tag already exists
+    let newTags = tags.filter(tag => !array.includes(tag));
+    array.push(...newTags);
 }
 
 /**
@@ -50,9 +48,15 @@ export function addUniqueTags(array, tags) {
  * @returns {Array} Array of unique tag strings
  */
 export function getAllUniqueTags(tasks) {
-    // TODO: Use .reduce() to collect all tags from all tasks
-    // Call your addUniqueTags function to add each task's tags to the accumulator
-    // Hint: Each task has a tags array
+ 
+    return tasks.reduce((acc, task) => {
+        task.tags.forEach(tag => {
+            if (!acc.includes(tag)) {
+                acc.push(tag);
+            }
+        });
+        return acc;
+    }, []);
 }
 
 /**
@@ -61,7 +65,7 @@ export function getAllUniqueTags(tasks) {
  * @returns {number} Count of completed tasks
  */
 export function countCompletedTasks(tasks) {
-    // TODO: Use .reduce() to count tasks where completed === true
+    return (tasks.filter(task => task.completed)).length;
 }
 
 /**
@@ -70,7 +74,7 @@ export function countCompletedTasks(tasks) {
  * @returns {boolean} True if all tasks are completed
  */
 export function areAllTasksComplete(tasks) {
-    // TODO: Use .every() to check if all tasks have completed === true
+    return tasks.every(task => task.completed);
 }
 
 /**
@@ -79,7 +83,7 @@ export function areAllTasksComplete(tasks) {
  * @returns {boolean} True if at least one task has priority === 'high'
  */
 export function hasHighPriorityTasks(tasks) {
-    // TODO: Use .some() to check if any task has high priority
+    return tasks.some(task => task.priority === 'high');
 }
 
 /**
@@ -89,7 +93,7 @@ export function hasHighPriorityTasks(tasks) {
  * @returns {Object|undefined} The task object or undefined if not found
  */
 export function findTaskById(tasks, id) {
-    // TODO: Use .find() to locate the task with matching id
+    return tasks.find(task => task.id === id);
 }
 
 /**
@@ -98,20 +102,28 @@ export function findTaskById(tasks, id) {
  * @returns {undefined} No return value (side effect function)
  */
 export function notifyIncompleteTasks(tasks) {
-    // TODO: Use .forEach() to console.log a reminder for each incomplete task
     // Example output: "Reminder: Complete 'Buy groceries'"
+    tasks.forEach(task => {
+        if (!task.completed) {
+            console.log(`Reminder: Complete '${task.title}'`);
+        }
+    })
 }
 
 /**
  * Calculates productivity statistics
  * @param {Array} tasks - Array of task objects
- * @returns {Object} Object with completionRate and totalTasks
+ * @returns {Object} Object with totalTasks, completedTasks, and completionRate
  */
 export function calculateProductivityStats(tasks) {
-    // TODO: Use multiple iterator methods to calculate:
-    // - totalTasks (length)
-    // - completedTasks (use .filter() and .length)
-    // - completionRate (completed / total * 100, rounded to 2 decimals)
+    const totalTasks = tasks.length;
+    const completedTasks = tasks.filter(task => task.completed).length;
+    const completionRate = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+    return {
+        totalTasks,
+        completedTasks,
+        completionRate: parseFloat(completionRate.toFixed(2))
+    };
 }
 
 /**
@@ -120,14 +132,19 @@ export function calculateProductivityStats(tasks) {
  * @returns {Object} Object with keys 'high', 'medium', 'low' containing task arrays
  */
 export function groupTasksByPriority(tasks) {
-    // TODO: Use .reduce() to create an object like:
-    // { high: [...], medium: [...], low: [...] }
-    const callbackFn = (accumulator, task) => {
-        // your code here...
-    }
-
-    return tasks.reduce(callbackFn, { high: [], medium: [], low: [] });
+    
+    return tasks.reduce((acc, task) => {
+        if (task.priority === 'high') {
+            acc.high.push(task);
+        } else if (task.priority === 'medium') {
+            acc.medium.push(task);
+        } else if (task.priority === 'low') {
+            acc.low.push(task);
+        }
+        return acc;
+    }, { high: [], medium: [], low: [] });
 }
+
 
 /**
  * Sorts tasks by priority (high -> medium -> low) and then by completion status
@@ -135,11 +152,27 @@ export function groupTasksByPriority(tasks) {
  * @returns {Array} New sorted array (don't mutate original)
  */
 export function sortTasksByPriorityAndStatus(tasks) {
-    // TODO: Create a copy with spread operator, then use .sort()
-    // Priority order: high (3) > medium (2) > low (1)
-    // Incomplete tasks should come before completed tasks
+    // Create a copy of the tasks array to avoid mutating the original
+    const sortedTasks = [...tasks];
+
+    // Map the priority string values to numeric for easier sorting
     const priorityValue = { high: 3, medium: 2, low: 1 };
-    // your code here...
+
+    // Map completion status 1 if true, 0 if false
+    const completionValue = (completed) => completed ? 1 : 0;
+
+    return sortedTasks.sort((a, b) => {
+        // Sort by priority first
+        const priorityDiff = priorityValue[b.priority] - priorityValue[a.priority];
+
+        // If priorities are different, return that difference
+        if (priorityDiff !== 0) {
+            return priorityDiff;
+        }
+
+        // If priorities are the same, sort by completion status
+        return completionValue(a.completed) - completionValue(b.completed);
+    });
 }
 
 /**
@@ -149,7 +182,7 @@ export function sortTasksByPriorityAndStatus(tasks) {
  * @returns {Array} Filtered array of tasks with matching priority
  */
 export function filterTasksByPriority(tasks, priority) {
-    // TODO: Use .filter() to return only tasks matching the given priority
+    return tasks.filter(task => task.priority === priority);
 }
 
 /**
@@ -158,9 +191,26 @@ export function filterTasksByPriority(tasks, priority) {
  * @returns {string} Formatted date string with ordinal suffix (e.g., "1st Jan 2026")
  */
 export function formatDate(dateString) {
-    // TODO: Parse the date string and format it with ordinal suffix
-    // Hint: Create a helper to get ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
+    // Parse the date string and format it with ordinal suffix
     // Example: "2025-12-13" should become "13th Dec 2025"
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+
+    // Create a helper to get ordinal suffixes (1st, 2nd, 3rd, 4th, etc.)
+    const getOrdinalSuffix = (n) => {
+        if (n > 3 && n < 21) return 'th';
+        // Use modulo to calc remainder from n/10 
+        switch (n % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
+    };
+    return `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
 }
 
 /**
@@ -170,12 +220,15 @@ export function formatDate(dateString) {
  * @returns {boolean} True if the route matches, false otherwise
  */
 export function isRouteActive(routePath, currentPath) {
-    // TODO: Implement route matching logic
-    // 1. For the home route ('/'), return true only if currentPath is exactly '/'
-    // 2. For other routes, return true if currentPath starts with the routePath
-    // Examples:
-    //   isRouteActive('/', '/') should return true
-    //   isRouteActive('/', '/dashboard') should return false
-    //   isRouteActive('/dashboard', '/dashboard') should return true
-    //   isRouteActive('/tasks', '/tasks/123') should return true
+  // Exact match for home route
+  if (routePath === '/' && currentPath === '/') {
+    return true;
+  }
+  
+  // For other routes, check if currentPath starts with routePath
+  if (routePath !== '/' && currentPath.startsWith(routePath)) {
+    return true;
+  }
+  
+  return false;
 }
