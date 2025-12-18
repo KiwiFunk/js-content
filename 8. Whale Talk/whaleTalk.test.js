@@ -1,6 +1,6 @@
 const convertToWhaleTalk = require("./whaleTalk");
 
-describe.skip('Whale Talk Translator', () => {
+describe('Whale Talk Translator', () => {
     describe('Basic vowel extraction', () => {
         test('returns a single vowel in uppercase', () => {
             expect(convertToWhaleTalk('a')).toBe('A');
