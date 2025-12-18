@@ -9,40 +9,69 @@ class MessageDecoder {
     // Remove the last element from the message array
     removeLastElement() {
         this.message.pop();
+        // Enable method chaining by returning this
+        return this;
     }
 
     addToEnd(...args) {
         // Validate the arguments to ensure they are type str
-        cleaned = args.filter(arg => typeof arg === 'string');
+        const cleaned = args.filter(arg => typeof arg === 'string');
 
-        // Spread cleaned arguments and push to the end of the message array
-        this.message.push(...cleaned);     
+        this.message.push(...cleaned);  // Push cleaned arguments  
+        return this;                    // For method chaining   
     }
 
-    replaceByIndex(index, newValue) {
+    // Replace x with y in the message array
+    replaceByIndex(x, y) {
         // Validate input types and range
-        if (typeof index === 'number' && index >= 0 && index < this.message.length && typeof newValue === 'string') {
-            this.message[index] = newValue;
-        } else {
-            console.error('Invalid index or newValue. Ensure the index is within range and newValue is a string.');
-        }
-    }
+        if (typeof x === 'string' && typeof y === 'string') {
 
+            const i = this.message.indexOf(x);
+
+            //Only modify array if match is found (indexOf returns -1 if not found)
+            if (i !== -1) this.message[i] = y;
+        
+        } else {
+            console.error('Invalid input types.');
+        }
+        return this; // For method chaining
+    }
 
     removeFirstElement() {
-        // your code here
+        if (this.message.length === 0) {
+            console.error('Message array is empty. Cannot remove first element.');
+            return;
+        } 
+        this.message.shift();
+        return this;
     }
 
-    addToBeginning() {
-        // your code here
+    addToBeginning(...args) {
+        // Validate the arguments to ensure they are type string
+        const cleaned = args.filter(arg => typeof arg === 'string');
+        this.message.unshift(...cleaned);
+        return this;
     }
 
-    replaceMultipleWithSingle() {
-        // your code here
+    replaceMultipleWithSingle(startIndex, endIndex, value) {
+        // Validate input types
+        if (typeof startIndex === 'number' && typeof endIndex === 'number' && typeof value === 'string') {
+            // Validate index range
+            if (startIndex >= 0 && startIndex < this.message.length && endIndex > startIndex && endIndex < this.message.length) {
+                // Start Index, Count to remove, New Value
+                this.message.splice(startIndex, endIndex - startIndex + 1, value);
+            } else {
+                console.error('Invalid start or end index.');
+            }
+        } else {
+            console.error('Invalid arguments.');
+        }
+        return this;
     }
 
     joinArrayToString() {
-        // your code here
+        // Join elements of the message array into a single string with spaces
+        return this.message.join(' ');
     }
 
     revealSecretMessage() {

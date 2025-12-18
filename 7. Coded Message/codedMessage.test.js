@@ -1,6 +1,6 @@
 const { MessageDecoder, startingMessage } = require('./codedMessage');
 
-describe.skip('Coded Message', () => {
+describe('Coded Message', () => {
     let decoder;
 
     beforeEach(() => {
